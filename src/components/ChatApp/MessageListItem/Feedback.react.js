@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ThumbUp from 'material-ui/svg-icons/action/thumb-up';
 import ThumbDown from 'material-ui/svg-icons/action/thumb-down';
+import Copy from 'material-ui/svg-icons/content/content-copy';
 import ShareIcon from 'material-ui/svg-icons/social/share';
 import UserPreferencesStore from '../../../stores/UserPreferencesStore';
 import * as Actions from '../../../actions/';
@@ -117,6 +118,15 @@ class Feedback extends React.Component {
 		}
 	}
 
+	copyToClipboard = (text) =>{
+		var dummy = document.createElement('textarea');
+		document.body.appendChild(dummy);
+		dummy.value = text.text;
+		dummy.select();
+		document.execCommand('copy');
+		document.body.removeChild(dummy);
+	}
+
 	render(){
 		let message = this.props.message;
 
@@ -166,9 +176,14 @@ class Feedback extends React.Component {
 							onClick={this.rateSkill.bind(this,'negative')}
 							style={feedbackIndicator}
 							color={negativeFeedbackColor}/>
-						<ShareIcon style={indicatorStyleShare}
-		          color={UserPreferencesStore.getTheme()==='light' ? '#90a4ae' : '#7eaaaf'}
-		          onClick={()=> window.open(twitterShare, '_blank')}/>
+						<ShareIcon
+							style={indicatorStyleShare}
+		          			color={UserPreferencesStore.getTheme()==='light' ? '#90a4ae' : '#7eaaaf'}
+		          			onClick={()=> window.open(twitterShare, '_blank')}/>
+				  		<Copy
+						  style={feedbackIndicator}
+						  color={negativeFeedbackColor}
+						  onClick={this.copyToClipboard.bind(this,message)}/>
 					</span>
 				);
 		}
