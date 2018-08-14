@@ -1057,7 +1057,6 @@ class MessageSection extends Component {
                       <FloatingActionButton
                         mini={true}
                         style={scrollTopStyle.button}
-                        // asdfghjkjhgfdsxdfghj
                         backgroundColor={bodyColor}
                         iconStyle={scrollTopStyle.icon}
                         onTouchTap={this.forcedScrollToTop}
