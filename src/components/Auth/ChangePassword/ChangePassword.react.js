@@ -396,7 +396,7 @@ class ChangePassword extends Component {
               <Translate text={dialogMessage} />
               <Close
                 style={styles.closingStyle}
-                onTouchTap={this.handleCloseResetPassword}
+                onClick={this.handleCloseResetPassword}
               />
             </Dialog>
           </div>

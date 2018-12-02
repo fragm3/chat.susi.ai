@@ -112,7 +112,7 @@ class TopBar extends Component {
           <IconButton
             {...props}
             iconStyle={{ fill: 'white' }}
-            onTouchTap={this.showOptions}
+            onClick={this.showOptions}
           >
             <MoreVertIcon />
           </IconButton>
@@ -184,7 +184,7 @@ class TopBar extends Component {
         <IconButton
           {...props}
           iconStyle={{ fill: 'white' }}
-          onTouchTap={this.showOptions}
+          onClick={this.showOptions}
         >
           <MoreVertIcon />
         </IconButton>
@@ -219,7 +219,7 @@ class TopBar extends Component {
           />
           <MenuItem
             primaryText={<Translate text="Login" />}
-            onTouchTap={this.props.handleOpen}
+            onClick={this.props.handleOpen}
             rightIcon={<SignUp />}
           />
         </Popover>

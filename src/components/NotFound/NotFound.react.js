@@ -104,7 +104,7 @@ export default class NotFound extends Component {
             <RaisedButton
               className="notfound-button"
               label="SignUp to SUSI"
-              onTouchTap={this.handleOpen}
+              onClick={this.handleOpen}
               backgroundColor={
                 UserPreferencesStore.getTheme() ? '#4285f4' : '#19314B'
               }
@@ -114,7 +114,7 @@ export default class NotFound extends Component {
             <RaisedButton
               className="notfound-button"
               label="Login to SUSI"
-              onTouchTap={this.handleLoginOpen}
+              onClick={this.handleLoginOpen}
               backgroundColor={
                 UserPreferencesStore.getTheme() ? '#4285f4' : '#19314B'
               }
@@ -136,7 +136,7 @@ export default class NotFound extends Component {
             {...this.props}
             handleForgotPassword={this.handleForgotPassword}
           />
-          <Close style={style.closingStyle} onTouchTap={this.handleClose} />
+          <Close style={style.closingStyle} onClick={this.handleClose} />
         </Dialog>
         {/* SignUp */}
         <Dialog
@@ -153,7 +153,7 @@ export default class NotFound extends Component {
             onRequestClose={this.handleClose}
             onLoginSignUp={this.handleLoginOpen}
           />
-          <Close style={style.closingStyle} onTouchTap={this.handleClose} />
+          <Close style={style.closingStyle} onClick={this.handleClose} />
         </Dialog>
         <Dialog
           className="dialogStyle"
@@ -167,7 +167,7 @@ export default class NotFound extends Component {
             {...this.props}
             showForgotPassword={this.showForgotPassword}
           />
-          <Close style={style.closingStyle} onTouchTap={this.handleClose} />
+          <Close style={style.closingStyle} onClick={this.handleClose} />
         </Dialog>
       </div>
     );

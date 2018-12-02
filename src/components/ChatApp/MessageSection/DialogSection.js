@@ -34,7 +34,7 @@ const DialogSection = props => {
           handleForgotPassword={props.onForgotPassword()}
           handleSignUp={props.handleSignUp}
         />
-        <Close style={closingStyle} onTouchTap={props.onRequestClose()} />
+        <Close style={closingStyle} onClick={props.onRequestClose()} />
       </Dialog>
       {/* SignUp */}
       <Dialog
@@ -51,7 +51,7 @@ const DialogSection = props => {
           onRequestClose={props.onRequestClose()}
           onLoginSignUp={props.onLoginSignUp()}
         />
-        <Close style={closingStyle} onTouchTap={props.onRequestClose()} />
+        <Close style={closingStyle} onClick={props.onRequestClose()} />
       </Dialog>
       {/*  Forgot Password */}
       <Dialog
@@ -63,7 +63,7 @@ const DialogSection = props => {
         onRequestClose={props.onRequestClose()}
       >
         <ForgotPassword {...props} onLoginSignUp={props.onLoginSignUp()} />
-        <Close style={closingStyle} onTouchTap={props.onRequestClose()} />
+        <Close style={closingStyle} onClick={props.onRequestClose()} />
       </Dialog>
       <Dialog
         className="dialogStyle"
@@ -82,7 +82,7 @@ const DialogSection = props => {
           frameBorder="0"
           scrolling="no"
         />
-        <Close style={closingStyle} onTouchTap={props.onRequestCloseTour()} />
+        <Close style={closingStyle} onClick={props.onRequestCloseTour()} />
       </Dialog>
     </div>
   );

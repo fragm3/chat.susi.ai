@@ -65,7 +65,7 @@ let Logged = props => (
     />
     <MenuItem
       primaryText="Login"
-      onTouchTap={this.handleLogin}
+      onClick={this.handleLogin}
       rightIcon={<SignUpIcon />}
     />
   </div>
@@ -321,7 +321,7 @@ class StaticAppBar extends Component {
         ) : (
           <MenuItem
             primaryText={<Translate text="Login" />}
-            onTouchTap={this.handleLogin}
+            onClick={this.handleLogin}
             rightIcon={<SignUpIcon />}
           />
         )}
@@ -382,7 +382,7 @@ class StaticAppBar extends Component {
               }
               targetOrigin={{ horizontal: 'right', vertical: 'top' }}
               anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-              onTouchTap={this.showOptions}
+              onClick={this.showOptions}
             />
             <Popover
               {...props}
@@ -466,7 +466,7 @@ class StaticAppBar extends Component {
           primaryText={link.label}
           className="drawerItem"
           containerElement={<Link to={link.url} />}
-          onTouchTap={this.handleDrawerClose}
+          onClick={this.handleDrawerClose}
         />
       );
     });
@@ -518,7 +518,7 @@ class StaticAppBar extends Component {
               boxShadow: 'none',
             }}
             showMenuIconButton={showLeftMenu !== 'none'}
-            onLeftIconButtonTouchTap={this.handleDrawer}
+            onLeftIconButtonClick={this.handleDrawer}
             iconStyleLeft={{ marginTop: '-2px' }}
             iconStyleRight={{ marginTop: '-2px' }}
             iconElementRight={<TopRightMenu />}
@@ -546,7 +546,7 @@ class StaticAppBar extends Component {
               height: '46px',
               boxShadow: 'none',
             }}
-            onTouchTap={this.handleDrawerClose}
+            onClick={this.handleDrawerClose}
           />
           {menuLlinks}
         </Drawer>
@@ -565,7 +565,7 @@ class StaticAppBar extends Component {
             handleSignUp={this.handleSignUp}
             handleForgotPassword={this.handleForgotPassword}
           />
-          <Close style={closingStyle} onTouchTap={this.handleClose} />
+          <Close style={closingStyle} onClick={this.handleClose} />
         </Dialog>
         {/* SignUp */}
         <Dialog
@@ -582,7 +582,7 @@ class StaticAppBar extends Component {
             onRequestClose={this.handleClose}
             onLoginSignUp={this.handleLogin}
           />
-          <Close style={closingStyle} onTouchTap={this.handleClose} />
+          <Close style={closingStyle} onClick={this.handleClose} />
         </Dialog>
         <Dialog
           className="dialogStyle"
@@ -597,7 +597,7 @@ class StaticAppBar extends Component {
             showForgotPassword={this.showForgotPassword}
             onLoginSignUp={this.handleLogin}
           />
-          <Close style={closingStyle} onTouchTap={this.handleClose} />
+          <Close style={closingStyle} onClick={this.handleClose} />
         </Dialog>
       </div>
     );

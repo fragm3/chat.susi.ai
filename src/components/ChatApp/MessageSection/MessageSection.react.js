@@ -322,7 +322,7 @@ class MessageSection extends Component {
     this.child.closeOptions();
   };
 
-  handleActionTouchTap = () => {
+  handleActionClick = () => {
     this.setState({
       SnackbarOpen: false,
     });
@@ -719,7 +719,7 @@ class MessageSection extends Component {
                       style={scrollTopStyle.button}
                       backgroundColor={bodyColor}
                       iconStyle={scrollTopStyle.icon}
-                      onTouchTap={this.forcedScrollToTop}
+                      onClick={this.forcedScrollToTop}
                     >
                       <NavigateUp />
                     </FloatingActionButton>
@@ -732,7 +732,7 @@ class MessageSection extends Component {
                       style={scrollBottomStyle.button}
                       backgroundColor={bodyColor}
                       iconStyle={scrollBottomStyle.icon}
-                      onTouchTap={this.forcedScrollToBottom}
+                      onClick={this.forcedScrollToBottom}
                     >
                       <NavigateDown />
                     </FloatingActionButton>
@@ -783,7 +783,7 @@ class MessageSection extends Component {
             message={<Translate text="Theme Changed" />}
             action="undo"
             autoHideDuration={4000}
-            onActionTouchTap={this.handleActionTouchTap}
+            onActionClick={this.handleActionClick}
             onRequestClose={this.handleRequestClose}
           />
           <Snackbar

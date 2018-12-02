@@ -301,7 +301,7 @@ class Support extends Component {
 
                 <RaisedButton
                   label="Sign Up"
-                  onTouchTap={this.handleSignUp}
+                  onClick={this.handleSignUp}
                   style={styles.buttonStyle}
                 />
               </div>
@@ -325,7 +325,7 @@ class Support extends Component {
             {...this.props}
             handleForgotPassword={this.handleForgotPassword}
           />
-          <Close style={styles.closingStyle} onTouchTap={this.handleClose} />
+          <Close style={styles.closingStyle} onClick={this.handleClose} />
         </Dialog>
         {/* SignUp */}
         <Dialog
@@ -342,7 +342,7 @@ class Support extends Component {
             onRequestClose={this.handleClose}
             onLoginSignUp={this.handleLogin}
           />
-          <Close style={styles.closingStyle} onTouchTap={this.handleClose} />
+          <Close style={styles.closingStyle} onClick={this.handleClose} />
         </Dialog>
         {/* ForgotPassword */}
         <Dialog
@@ -357,7 +357,7 @@ class Support extends Component {
             {...this.props}
             showForgotPassword={this.handleForgotPassword}
           />
-          <Close style={styles.closingStyle} onTouchTap={this.handleClose} />
+          <Close style={styles.closingStyle} onClick={this.handleClose} />
         </Dialog>
       </div>
     );
