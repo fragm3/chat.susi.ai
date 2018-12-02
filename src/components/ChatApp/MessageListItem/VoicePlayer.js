@@ -67,17 +67,6 @@ class VoicePlayer extends Component {
   }
 
   componentDidMount() {
-    const events = [{ name: 'start', action: this.props.onStart }];
-
-    events.forEach(e => {
-      this.speech.addEventListener(e.name, e.action);
-    });
-
-    this.speech.addEventListener('end', () => {
-      this.setState({ started: false });
-      this.props.onEnd();
-    });
-
     if (this.props.play) {
       this.speak();
     }

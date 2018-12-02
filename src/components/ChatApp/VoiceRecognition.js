@@ -81,18 +81,6 @@ class VoiceRecognition extends Component {
   }
 
   componentDidMount() {
-    const events = [
-      { name: 'start', action: this.props.onStart },
-      { name: 'end', action: this.props.onEnd },
-      { name: 'speechstart', action: this.props.onSpeechStart },
-    ];
-
-    events.forEach(event => {
-      this.recognition.addEventListener(event.name, event.action);
-    });
-
-    this.recognition.addEventListener('result', this.bindResult);
-
     this.start();
   }
 
