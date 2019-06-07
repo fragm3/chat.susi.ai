@@ -1,7 +1,6 @@
 import React from 'react';
 import Translate from '../Translate/Translate.react';
 import Avatar from './Avatar';
-import { Link as _Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SettingsTabWrapper, { Heading } from './SettingsTabWrapper';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -53,20 +52,9 @@ const DangerContainer = styled.div`
 
 const DangerButton = styled(Button)`
   background-color: #fafbfc;
-  background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
   color: #cb2431;
   &:hover {
-    background-color: #cb2431;
-    background-image: linear-gradient(-180deg, #de4450, #cb2431 90%);
-    border-color: rgba(27, 31, 35, 0.5);
-    color: #fff;
-  }
-`;
-
-const Link = styled(_Link)`
-  color: #cb2431;
-  font-weight: 600;
-  &:hover {
+    background-color: #ff0000;
     color: #fff;
   }
 `;
@@ -268,6 +256,7 @@ class AccountTab extends React.Component {
       settingSave,
     } = this.state;
     const {
+      actions,
       email,
       timeZone: _timeZone,
       prefLanguage: _prefLanguage,
@@ -386,8 +375,11 @@ class AccountTab extends React.Component {
             <Translate text="Once you delete account, there is no going back. Please be certain." />
           </div>
           <div>
-            <DangerButton variant="contained">
-              <Link to="/delete-account">Delete</Link>
+            <DangerButton
+              variant="contained"
+              onClick={() => actions.openModal({ modalType: 'deleteAccount' })}
+            >
+              Delete
             </DangerButton>
           </div>
         </DangerContainer>

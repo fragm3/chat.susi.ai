@@ -77,7 +77,7 @@ const deleteCookie = (name, options = {}) => {
   document.cookie = cookieString;
 };
 
-class DeleteAccountModal extends React.Component {
+class ConfirmDeleteAccount extends React.Component {
   static propTypes = {
     actions: PropTypes.object,
     email: PropTypes.string,
@@ -195,4 +195,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DeleteAccountModal);
+)(ConfirmDeleteAccount);

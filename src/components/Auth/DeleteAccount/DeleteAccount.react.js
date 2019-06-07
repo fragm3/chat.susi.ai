@@ -4,12 +4,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 // Components
 import PasswordField from 'material-ui-password-field';
+import CloseButton from '../../shared/CloseButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Translate from '../../Translate/Translate.react';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
-import _Paper from '@material-ui/core/Paper';
 import { checkPassword, checkAccountPermission } from '../../../apis';
 import styled from 'styled-components';
 import uiActions from '../../../redux/actions/ui';
@@ -19,16 +19,6 @@ const DeleteButton = styled(Button)`
   color: white;
   :hover {
     background-color: #b20000;
-  }
-`;
-
-const Paper = styled(_Paper)`
-  margin: 5rem auto;
-  padding: 0.625rem;
-  text-align: center;
-  width: 25rem;
-  @media (max-width: 450px) {
-    width: 18.75rem;
   }
 `;
 
@@ -84,6 +74,15 @@ class DeleteAccount extends Component {
     }
   };
 
+  handleDialogClose = () => {
+    const { actions } = this.props;
+    this.setState({
+      password: '',
+      passwordError: false,
+    });
+    actions.closeModal();
+  };
+
   handleSubmit = event => {
     this.setState({ loading: true });
     const { actions, email } = this.props;
@@ -92,7 +91,7 @@ class DeleteAccount extends Component {
       .then(payload => {
         if (payload.accepted) {
           this.setState({ loading: false });
-          actions.openModal({ modalType: 'deleteAccount' });
+          actions.openModal({ modalType: 'confirmDeleteAccount' });
         }
       })
       .catch(error => {
@@ -108,12 +107,6 @@ class DeleteAccount extends Component {
   };
 
   render() {
-    const body = {
-      margin: '5rem auto',
-      padding: '0.625rem',
-      textAlign: 'center',
-    };
-
     const fieldStyle = {
       width: '16rem',
     };
@@ -124,55 +117,54 @@ class DeleteAccount extends Component {
     const { loading, password, validForm } = this.state;
     console.log(loading, 'Loading');
     return (
-      <div style={body}>
-        <Paper elevation={5}>
-          <h1 style={{ marginBottom: '30px' }}>Delete Account</h1>
-          <div>
-            <h4 style={{ fontWeight: 'normal' }}>
-              Please enter your password to confirm deletion
-            </h4>
-          </div>
-          <div>
-            <form onSubmit={this.handleSubmit}>
-              <div>
-                <FormControl error={this.passwordErrorMessage !== ''}>
-                  <PasswordField
-                    name="password"
-                    style={fieldStyle}
-                    value={password}
-                    onChange={this.handleChange}
-                    errorText={this.passwordErrorMessage}
-                  />
-                  <FormHelperText error={this.passwordErrorMessage !== ''}>
-                    {this.passwordErrorMessage}
-                  </FormHelperText>
-                </FormControl>
-              </div>
-              <div style={submitButton}>
-                <DeleteButton
-                  variant="contained"
-                  onClick={this.handleSubmit}
-                  disabled={!validForm}
-                  style={{ marginRight: '10px' }}
-                >
-                  {loading ? (
-                    <CircularProgress color="default" size={24} />
-                  ) : (
-                    <Translate text="Delete Account" />
-                  )}
-                </DeleteButton>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={this.handleCancel}
-                >
-                  <Translate text="Cancel" />
-                </Button>
-              </div>
-            </form>
-          </div>
-        </Paper>
-      </div>
+      <React.Fragment>
+        <h1 style={{ marginBottom: '30px' }}>Delete Account</h1>
+        <div>
+          <h4 style={{ fontWeight: 'normal' }}>
+            Please enter your password to confirm deletion
+          </h4>
+        </div>
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <FormControl error={this.passwordErrorMessage !== ''}>
+                <PasswordField
+                  name="password"
+                  style={fieldStyle}
+                  value={password}
+                  onChange={this.handleChange}
+                  errorText={this.passwordErrorMessage}
+                />
+                <FormHelperText error={this.passwordErrorMessage !== ''}>
+                  {this.passwordErrorMessage}
+                </FormHelperText>
+              </FormControl>
+            </div>
+            <div style={submitButton}>
+              <DeleteButton
+                variant="contained"
+                onClick={this.handleSubmit}
+                disabled={!validForm}
+                style={{ marginRight: '10px' }}
+              >
+                {loading ? (
+                  <CircularProgress color="default" size={24} />
+                ) : (
+                  <Translate text="Delete Account" />
+                )}
+              </DeleteButton>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.handleCancel}
+              >
+                <Translate text="Cancel" />
+              </Button>
+            </div>
+          </form>
+        </div>
+        <CloseButton onClick={this.handleDialogClose} />
+      </React.Fragment>
     );
   }
 }

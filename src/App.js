@@ -40,7 +40,6 @@ import StaticAppBar from './components/StaticAppBar/StaticAppBar.react';
 import Footer from './components/Footer/Footer.react';
 import CookiePolicy from './components/CookiePolicy/CookiePolicy.react';
 import Admin from './components/Admin/Admin';
-import DeleteAccount from './components/Auth/DeleteAccount/DeleteAccount.react';
 
 class App extends Component {
   static propTypes = {
@@ -187,11 +186,6 @@ class App extends Component {
               <Route exact path="/logout" component={Logout} />
               <Route path="/admin" component={Admin} />
               <ProtectedRoute exact path="/settings" component={Settings} />
-              <ProtectedRoute
-                exact
-                path="/delete-account"
-                component={DeleteAccount}
-              />
               <Route exact path="/*:path(error-404|)" component={NotFound} />
             </Switch>
             {renderFooter}
